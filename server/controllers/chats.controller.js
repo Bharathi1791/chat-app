@@ -5,7 +5,7 @@ const addChat = async (message, userId) => {
   const user = await users.getUserById(addMessage.user_id);
   return {
     message,
-    nick_name: user.nick_name,
+    nickname: user.nick_name,
     timestamp: addMessage.timestamp,
   };
 };

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import styled from 'styled-components';
-import { Messages } from './Messages';
+import PropTypes from 'prop-types';
+import Messages from './Messages';
 import '../Views/Font.css';
 import music from '../music/message.mp3';
-
 
 const Input = styled.input`
   width: 65%;
@@ -62,7 +62,6 @@ const Title = styled.h4`
 const socket = io.connect('http://localhost:8000');
 
 const Chat = ({ userId, nickName }) => {
-
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -109,17 +108,33 @@ const Chat = ({ userId, nickName }) => {
   return (
     <div>
       <ChatHeader>
-        <Title>Welcome {nickName} let's share your thoughts.....</Title>
+        <Title>
+          Welcome
+          {nickName}
+          share your thoughts here.....
+        </Title>
         <Button type="button" onClick={manualSocketDisconnect}>Disconnect</Button>
       </ChatHeader>
       <Messages messages={messages} />
       <Form onSubmit={saveChat}>
         <Input required type="text" name="chat" />
         <Button type="submit">Send</Button>
-        <audio id="tune"> <source src={music}></source></audio>
+        <audio id="tune">
+          <source src={music} />
+        </audio>
       </Form>
     </div>
   );
 };
+
+Chat.defaultProps = {
+  nickName: '',
+};
+
+Chat.propTypes = {
+  userId: PropTypes.number.isRequired,
+  nickName: PropTypes.string,
+};
+
 
 export default Chat;

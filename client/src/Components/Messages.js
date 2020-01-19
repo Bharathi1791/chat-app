@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const formatTimeStamp = (ts) => {
   const d = new Date(ts);
@@ -30,26 +31,35 @@ const Chat = styled.p`
   font-size: 30px;
 `;
 
-export const Messages = ({ messages }) => {
-  return (
-    <div>
-      {
-        messages
-          .map(({ message, nick_name, timestamp }) => {
-            return (
-              <Message key={timestamp}>
-                {
-                  nick_name ?
-                    <NickName>{nick_name} ({formatTimeStamp(timestamp)})</NickName>
-                    :
-                    <>Left Message:</>
-                }
+const Messages = ({ messages }) => (
+  <div>
+    {
+      messages
+        .map(({ message, nickname, timestamp }) => (
+          <Message key={timestamp}>
+            {
+              nickname
+                ? (
+                  <NickName>
+                    {nickname}
+                    (
+                    {formatTimeStamp(timestamp)}
+                    )
+                  </NickName>
+                )
+                : <>Left Message:</>
+            }
+            <Chat>{message}</Chat>
+          </Message>
+        ))
+    }
 
-                <Chat>{message}</Chat>
-              </Message>
-            )
-          })
-      }
-    </div>
-  )
-}
+  </div>
+
+);
+
+Messages.propTypes = {
+  messages: PropTypes.arrayOf(Object).isRequired,
+};
+
+export default Messages;

@@ -9,7 +9,7 @@ const add = (message, userId) =>
 
 const get = () =>
   pool
-    .query(`SELECT c.id, c.message, c.timestamp, u.nick_name, u.active FROM "chats" AS c
+    .query(`SELECT c.id, c.message, c.timestamp, u.nick_name AS nickName, u.active FROM "chats" AS c
             LEFT JOIN "users" AS u ON u.id=c.user_id
             ORDER BY timestamp ASC`)
     .then(res => res.rows)

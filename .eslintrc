@@ -1,0 +1,45 @@
+{
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:mocha/recommended"
+  ],
+  "plugins": [
+    "mocha",
+    "chai-friendly"
+  ],
+  "globals": {
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "rules": {
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "debug"
+        ]
+      }
+    ],
+    "global-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "mocha/no-mocha-arrows": "off",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allowAfterThis": true
+      }
+    ],
+    "implicit-arrow-linebreak": "off",
+    "arrow-parens": "off",
+    "function-paren-newline": "off"
+  }
+}

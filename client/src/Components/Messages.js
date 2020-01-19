@@ -38,7 +38,13 @@ export const Messages = ({ messages }) => {
           .map(({ message, nick_name, timestamp }) => {
             return (
               <Message key={timestamp}>
-                <NickName>{nick_name} ({formatTimeStamp(timestamp)})</NickName>
+                {
+                  nick_name ?
+                    <NickName>{nick_name} ({formatTimeStamp(timestamp)})</NickName>
+                    :
+                    <>Left Message:</>
+                }
+
                 <Chat>{message}</Chat>
               </Message>
             )

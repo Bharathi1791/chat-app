@@ -35,12 +35,10 @@ export const Messages = ({ messages }) => {
     <div>
       {
         messages
-          .map(({ message, nickname, timestamp, active }) => {
+          .map(({ message, nick_name, timestamp }) => {
             return (
               <Message key={timestamp}>
-                {nickname ?
-                  <NickName>{nickname} ({formatTimeStamp(timestamp)})</NickName>
-                  : <>(Left Chat Message)</>}
+                <NickName>{nick_name} ({formatTimeStamp(timestamp)})</NickName>
                 <Chat>{message}</Chat>
               </Message>
             )

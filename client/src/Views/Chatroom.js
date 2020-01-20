@@ -11,7 +11,7 @@ const ChatWrapper = styled.div`
 
 const Chatroom = (user) => {
   const userId = user.user.id;
-  const nickName = user.user.nickname;
+  const nickName = user.user.nick_name;
   return (
     <ChatWrapper>
       <Chat userId={userId} nickName={nickName} />

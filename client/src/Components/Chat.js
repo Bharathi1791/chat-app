@@ -110,7 +110,9 @@ const Chat = ({ userId, nickName }) => {
       <ChatHeader>
         <Title>
           Welcome
+          {' '}
           {nickName}
+          {' '}
           share your thoughts here.....
         </Title>
         <Button type="button" onClick={manualSocketDisconnect}>Disconnect</Button>
